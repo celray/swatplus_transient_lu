@@ -45,9 +45,9 @@
       !! HRU sediment calculations
       if (bsn_cc%cfac == 0) then
         cover = pl_mass(j)%ab_gr_com%m + rsd1(j)%tot_com%m
-        if (j == 4) then
-              write (88997766,*) pl_mass(j)%ab_gr_com%m, rsd1(j)%tot_com%m
-        end if
+        !if (j == 4) then
+             ! write (88997766,*) pl_mass(j)%ab_gr_com%m, rsd1(j)%tot_com%m
+        !end if
         if (pcom(j)%npl > 0) then
           c = Exp((-.2231 - cvm_com(j)) * Exp(-.00115 * cover) + cvm_com(j))          
         else
@@ -63,9 +63,9 @@
         bio_frcov = 1. - grcov_fr * Exp(-.01 * pcom(j)%cht_mx)
         c = Max(1.e-10, rsd_frcov * bio_frcov)
       end if
-      if (j == 4) then
-              write (556644533,*) cvm_com(j), cover
-        end if
+      !if (j == 4) then
+              !write (556644533,*) cvm_com(j), cover
+        !end if
       usle_cfac(ihru) = c
       
       return

@@ -97,9 +97,9 @@
       do ipl = 1, pcom(j)%npl
         pl_mass(j)%tot_com%m = amax1 (pl_mass(j)%tot_com%m, pl_mass(j)%tot(ipl)%m)
       end do
-      if (j == 4) then
-              write (33334444,*) pl_mass(j)%tot_com%m
-      end if
+      !if (j == 4) then
+              !write (33334444,*) pl_mass(j)%tot_com%m
+      !end if
       
       npl_gro = 0
       do ipl = 1, pcom(j)%npl

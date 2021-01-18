@@ -47,9 +47,9 @@
       
       !! initialize variables
       cklsp(j) = usle_cfac(j) * hru(j)%lumv%usle_mult
-      if (j == 4) then
-              write (09090909,*) usle_cfac(j),  hru(j)%lumv%usle_mult
-      end if
+      !if (j == 4) then
+              !write (09090909,*) usle_cfac(j),  hru(j)%lumv%usle_mult
+      !end if
       !! compute sediment yield with musle
       sedyld(j) = (surfq(j) * peakr * 1000. * hru(j)%km) ** .56 * cklsp(j)
 

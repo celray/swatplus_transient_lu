@@ -46,12 +46,13 @@
       use sd_channel_module
       use hru_lte_module
       use basin_module
-      use hydrograph_module, only : sp_ob, sp_ob1, ob, chaz, ch_stor_y, ch_in_y, ch_out_y
+      use hydrograph_module, only : sp_ob, sp_ob1, ob, chaz, ch_stor_y, ch_in_y, ch_out_y, hd_tot
       use output_landscape_module
       use conditional_module
       use constituent_mass_module
       use output_ls_pesticide_module
       use water_body_module
+      use input_file_module
       
       implicit none
       
@@ -79,8 +80,14 @@
       integer :: ipg                 !              |
       integer :: ireg                !              |
       integer :: ilu                 !              |
-
+      integer :: nspu
       time%yrc = time%yrc_start
+      
+      nspu = 1
+      if (sp_ob%hru > 0) then         ! 1==hru
+        sp_ob1%hru = nspu
+        nspu = sp_ob%hru + nspu
+      end if 
       
       !! generate precip for the first day - %precip_next
       if (Mod(time%yrc,4) == 0) then 
@@ -101,7 +108,11 @@
     !1235 format (1x, a, 2x, i4)
           
         time%yrs = curyr
-
+        
+        if (time%yrc == 1992) then
+            in_con%hru_con = "1992hru.con"
+            call hyd_reread_connect(in_con%hru_con, "hru     ", sp_ob1%hru, sp_ob%hru)
+        end if
         !! determine beginning and ending dates of simulation in current year
         if (Mod(time%yrc,4) == 0) then 
           ndays = ndays_leap
