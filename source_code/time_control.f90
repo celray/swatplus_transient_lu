@@ -104,7 +104,7 @@
       call xmon
       call cli_precip_control (0)
 	  
-	  OPEN(38789,file="hru_area_tracking.csv",action='write',status='replace')
+	  OPEN(38789,file="hru_area_yr.csv",action='write',status='replace')
 	
       do curyr = 1, time%nbyr
     !!!!!  uncomment next two lines for RELEASE version only (Srin/Karim)
