@@ -60,6 +60,7 @@
       !integer :: flood_count
 
       integer :: j                   !none          |counter
+      integer :: cj                   !none          |counter
       integer :: julian_day          !none          |counter
       integer :: id                  !              |
       integer :: isched              !              |
@@ -81,6 +82,8 @@
       integer :: ireg                !              |
       integer :: ilu                 !              |
       integer :: nspu
+	  character(len=4)::au_year
+	  
       time%yrc = time%yrc_start
       
       nspu = 1
@@ -100,19 +103,39 @@
       time%day = time%day_start
       call xmon
       call cli_precip_control (0)
-
+	  
+	  OPEN(38789,file="hru_area_tracking.csv",action='write',status='replace')
+	
       do curyr = 1, time%nbyr
     !!!!!  uncomment next two lines for RELEASE version only (Srin/Karim)
           !call DATE_AND_TIME (b(1), b(2), b(3), date_time)
           !write (*,1235) cal_sim, time%yrc
     !1235 format (1x, a, 2x, i4)
-          
+		  
         time%yrs = curyr
         
-        if (time%yrc == 1992) then
-            in_con%hru_con = "1992hru.con"
-            call hyd_reread_connect(in_con%hru_con, "hru     ", sp_ob1%hru, sp_ob%hru)
-        end if
+        !if (time%yrc == 1992) then
+        !       in_con%hru_con = "hru_1992.con"
+        !       call hyd_reread_connect(in_con%hru_con, "hru     ", 1, 217)
+		!	call hrudb_init
+		!	!call hru_read
+		!end if
+		
+		! check if a .con file of hru 'hru_yyyy.con
+		write(au_year, '(i4)' )  time%yrc
+        in_con%hru_con = "hru_" // au_year // ".con"
+        call hyd_reread_connect(in_con%hru_con, "hru     ", sp_ob1%hru, sp_ob%hru)
+		call hrudb_init
+				
+		! write a tracker for areas in hrus
+		write(38789,*) ''
+		write(38789,*)'YR:',time%yrc, ',', ',',','
+		write(38789,*)',HRU,Area (km2),Area(ha)'
+				
+		do cj = 1, size(hru) - 1
+           write(38789,*)hru(cj)%obj_no, ',', ob(cj)%name, ',', hru(cj)%km, ',', hru(cj)%area_ha
+		end do
+
         !! determine beginning and ending dates of simulation in current year
         if (Mod(time%yrc,4) == 0) then 
           ndays = ndays_leap
@@ -354,7 +377,8 @@
       !! update simulation year
       time%yrc = time%yrc + 1
       end do            !!     end annual loop
-      
+	  CLOSE(38789)
+
       !! ave annual calibration output and reset time for next simulation
       call calsoft_ave_output
       time = time_init

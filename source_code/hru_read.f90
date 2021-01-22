@@ -51,8 +51,10 @@
             read (113,*,iostat=eof) i
             if (eof < 0) exit
             imax = Max(imax,i)
-          end do
-          
+		 end do
+		
+		! C James Deallocates if need be
+        !If (allocated(hru_db))  deallocate (hru_db)
         allocate (hru_db(0:imax))
 
         rewind (113)
