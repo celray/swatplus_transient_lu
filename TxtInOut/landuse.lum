@@ -1,0 +1,6 @@
+landuse.lum: written by SWAT+ editor v1.2.3 on 2021-01-23 05:28
+name                         cal_group          plnt_com               mgt               cn2         cons_prac             urban            urb_ro           ov_mann              tile               sep               vfs              grww               bmp  
+agrl_lum                          null         agrl_comm          agrl_rot        rc_strow_g       cross_slope              null              null      convtill_res              null              null              null              null              null  
+shrb_lum                          null         shrb_comm              null        rc_strow_g     up_down_slope              null              null    convtill_nores              null              null              null              null              null  
+gras_lum                          null         gras_comm              null        rc_strow_g     up_down_slope              null              null    convtill_nores              null              null              null              null              null  
+frst_lum                          null         frst_comm              null            wood_f     up_down_slope              null              null        forest_med              null              null              null              null              null  
