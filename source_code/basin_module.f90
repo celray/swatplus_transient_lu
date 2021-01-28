@@ -340,11 +340,11 @@
       type(snutc_header) :: snutc_hdr
       
       type basin_yld_header                              
-          character (len=10) :: year =       "      year "                                                     
+          character (len=11) :: year =       "      year "                                                     
           character (len=16) :: plant_no =   "     plant_no"
           character (len=16) :: plant_name = "plant_name "
-          character (len=16) :: area_ha =    " harv_area(ha)   "  
-          character (len=16) :: yield_t =    "  yld(t)         "
+          character (len=17) :: area_ha =    " harv_area(ha)   "  
+          character (len=17) :: yield_t =    "  yld(t)         "
           character (len=16) :: yield_tha =  " yld(t/ha)      "
       end type basin_yld_header
       type (basin_yld_header) :: bsn_yld_hdr

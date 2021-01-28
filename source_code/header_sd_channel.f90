@@ -117,7 +117,7 @@
           write (4801,*) sdch_hdr_units
           write (9000,*) "SWAT-DEG_CHANNEL_MORPH    channel_sdmorph_mon.txt"
           if (pco%csvout == "y") then
-            open (4805,file="channel_mon_sdmorph.csv",recl = 1500)
+            open (4805,file="channel_sdmorph_mon.csv",recl = 1500)
             write (4805,*) bsn%name, prog
             write (4805,'(*(G0.3,:,","))') sdch_hdr   
             write (4805,'(*(G0.3,:,","))') sdch_hdr_units

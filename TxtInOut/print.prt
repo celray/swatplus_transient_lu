@@ -4,45 +4,45 @@ nyskip      day_start  yrc_start  day_end   yrc_end   interval
 aa_int_cnt  
 0           
 csvout        dbout         cdfout        
-n             n             n             
+y             n             n             
 soilout       mgtout        hydcon        fdcout        
 n             n             n             n             
 objects                  daily       monthly        yearly         avann  
-basin_wb                     n             n             y             y  
-basin_nb                     n             n             y             y  
-basin_ls                     n             n             y             y  
-basin_pw                     n             n             y             y  
-basin_aqu                    n             n             y             y  
-basin_res                    n             n             y             y  
-basin_cha                    n             n             y             y  
-basin_sd_cha                 n             n             y             y  
-basin_psc                    n             n             y             y  
-region_wb                    n             n             y             y  
-region_nb                    n             n             y             y  
-region_ls                    n             n             y             y  
-region_pw                    n             n             y             y  
-region_aqu                   n             n             y             y  
-region_res                   n             n             y             y  
-region_cha                   n             n             y             y  
-region_sd_cha                n             n             y             y  
-region_psc                   n             n             y             y  
-lsunit_wb                    n             n             y             y  
-lsunit_nb                    n             n             y             y  
-lsunit_ls                    n             n             y             y  
-lsunit_pw                    n             n             y             y  
-hru_wb                       n             n             y             y  
-hru_nb                       n             n             y             y  
-hru_ls                       n             n             y             y  
-hru_pw                       n             n             y             y  
-hru-lte_wb                   n             n             y             y  
-hru-lte_nb                   n             n             y             y  
-hru-lte_ls                   n             n             y             y  
-hru-lte_pw                   n             n             y             y  
-channel                      n             n             y             y  
-channel_sd                   n             n             y             y  
-aquifer                      n             n             y             y  
-reservoir                    n             n             y             y  
-recall                       n             n             y             y  
-hyd                          n             n             y             y  
-ru                           n             n             y             y  
-pest                         n             n             y             y  
+basin_wb                     y             y             y             y  
+basin_nb                     y             y             y             y  
+basin_ls                     y             y             y             y  
+basin_pw                     y             y             y             y  
+basin_aqu                    y             y             y             y  
+basin_res                    y             y             y             y  
+basin_cha                    y             y             y             y  
+basin_sd_cha                 y             y             y             y  
+basin_psc                    y             y             y             y  
+region_wb                    y             y             y             y  
+region_nb                    y             y             y             y  
+region_ls                    y             y             y             y  
+region_pw                    y             y             y             y  
+region_aqu                   y             y             y             y  
+region_res                   y             y             y             y  
+region_cha                   y             y             y             y  
+region_sd_cha                y             y             y             y  
+region_psc                   y             y             y             y  
+lsunit_wb                    y             y             y             y  
+lsunit_nb                    y             y             y             y  
+lsunit_ls                    y             y             y             y  
+lsunit_pw                    y             y             y             y  
+hru_wb                       y             y             y             y  
+hru_nb                       y             y             y             y  
+hru_ls                       y             y             y             y  
+hru_pw                       y             y             y             y  
+hru-lte_wb                   y             y             y             y  
+hru-lte_nb                   y             y             y             y  
+hru-lte_ls                   y             y             y             y  
+hru-lte_pw                   y             y             y             y  
+channel                      y             y             y             y  
+channel_sd                   y             y             y             y  
+aquifer                      y             y             y             y  
+reservoir                    y             y             y             y  
+recall                       y             y             y             y  
+hyd                          y             y             y             y  
+ru                           y             y             y             y  
+pest                         y             y             y             y  

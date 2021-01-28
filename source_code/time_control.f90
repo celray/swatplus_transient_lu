@@ -113,15 +113,8 @@
     !1235 format (1x, a, 2x, i4)
 		  
         time%yrs = curyr
-        
-        !if (time%yrc == 1992) then
-        !       in_con%hru_con = "hru_1992.con"
-        !       call hyd_reread_connect(in_con%hru_con, "hru     ", 1, 217)
-		!	call hrudb_init
-		!	!call hru_read
-		!end if
-		
-		! check if a .con file of hru 'hru_yyyy.con
+        		
+		! check if a .con file of hru 'hru_yyyy.con exists
 		write(au_year, '(i4)' )  time%yrc
         in_con%hru_con = "hru_" // au_year // ".con"
         call hyd_reread_connect(in_con%hru_con, "hru     ", sp_ob1%hru, sp_ob%hru)
@@ -280,7 +273,6 @@
               end if
             end do
           end if
-
         end do              !! end daily loop
 
         !! perform end-of-year processes
