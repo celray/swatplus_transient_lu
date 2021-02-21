@@ -1,6 +1,6 @@
 # SWAT+ Transient Land Use (SWAT+ TLU)
 
-This is the repo for developing land use update alternatives. 
+This is the repo for developing land use update alternatives.  
 We have implemented a way to change HRU areas using the hru.con file
 
 # How it works

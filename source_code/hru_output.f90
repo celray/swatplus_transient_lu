@@ -20,6 +20,9 @@
       real :: const
       real :: sw_init
       real :: sno_init
+      real :: lat_q_vol_d
+      real :: surq_q_vol_d
+      real :: et_vol_d
                          
 !!    ~ ~ ~ PURPOSE ~ ~ ~
 !!    this subroutine outputs HRU variables on daily, monthly and annual time steps
@@ -40,7 +43,12 @@
              hwb_d(j)%sw = (hwb_d(j)%sw_init + hwb_d(j)%sw_final) / 2.
              hwb_d(j)%sno_final = hru(j)%sno_mm
              hwb_d(j)%snopack = (hwb_d(j)%sno_init + hwb_d(j)%sno_final) / 2.
+             lat_q_vol_d = hwb_d(j)%latq * hru(j)%km * 1000
+             surq_q_vol_d = hwb_d(j)%surq_gen * hru(j)%km * 1000
+             et_vol_d = hwb_d(j)%et * hru(j)%km * 1000
              write (2000,100) time%day, time%mo, time%day_mo, time%yrc, j, ob(iob)%gis_id, ob(iob)%name, hwb_d(j)   !! waterbal
+             write(500000,'(*(G0.3,:","))')time%day_mo,time%mo,time%yrc,j,ob(iob)%gis_id,ob(iob)%name,hru(j)%km,lat_q_vol_d,surq_q_vol_d,et_vol_d  !! volumes
+             
              if (pco%csvout == "y") then
                !! changed write unit below (2004 to write file data)
                write (2004,'(*(G0.3,:","))') time%day, time%mo, time%day_mo, time%yrc, j, ob(iob)%gis_id, ob(iob)%name, hwb_d(j)  !! waterbal

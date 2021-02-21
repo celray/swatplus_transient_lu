@@ -13,8 +13,9 @@
  1000 format(1x,"                  SWAT+               ",/,             &
      &          "               Revision 60.5          ",/,             &
      &          "      Soil & Water Assessment Tool    ",/,             &
-     &          "               PC Version             ",/,             &
-     &          "    Program reading . . . executing",/)
+     &          "            Transient Landuse         ",/,             &
+     &          "                PC Version            ",/,             &
+     &          "    Program reading . . . executing   ",/)
      
       call proc_bsn   
       call proc_date_time

@@ -60,7 +60,7 @@
       !integer :: flood_count
 
       integer :: j                   !none          |counter
-      integer :: cj                   !none          |counter
+      integer :: cj                  !none          |counter
       integer :: julian_day          !none          |counter
       integer :: id                  !              |
       integer :: isched              !              |
@@ -105,12 +105,16 @@
       call cli_precip_control (0)
 	  
 	  OPEN(38789,file="hru_area_yr.csv",action='write',status='replace')
+	  OPEN(500000,file="hru_vols_day.csv",action='write',status='replace')
+    
+      write(500000,'(*(G0.3,:","))')'Day,Month,Year,HRUID,GIS_ID,HRU,Area(km2),lateral_flow(m3),surface_runoff(m3),ET(m3)'
+      
 	
       do curyr = 1, time%nbyr
-    !!!!!  uncomment next two lines for RELEASE version only (Srin/Karim)
-          !call DATE_AND_TIME (b(1), b(2), b(3), date_time)
-          !write (*,1235) cal_sim, time%yrc
-    !1235 format (1x, a, 2x, i4)
+        !!!!!  uncomment next two lines for RELEASE version only (Srin/Karim)
+              !call DATE_AND_TIME (b(1), b(2), b(3), date_time)
+              !write (*,1235) cal_sim, time%yrc
+        !1235 format (1x, a, 2x, i4)
 		  
         time%yrs = curyr
         		
@@ -123,10 +127,10 @@
 		! write a tracker for areas in hrus
 		write(38789,*) ''
 		write(38789,*)'YR:',time%yrc, ',', ',',','
-		write(38789,*)',HRU,Area (km2),Area(ha)'
+		write(38789,*)',HRU,Area (km2),Area(ha),pet_day'
 				
 		do cj = 1, size(hru) - 1
-           write(38789,*)hru(cj)%obj_no, ',', ob(cj)%name, ',', hru(cj)%km, ',', hru(cj)%area_ha
+           write(38789,*)hru(cj)%obj_no, ',', ob(cj)%name, ',', hru(cj)%km, ',', hru(cj)%area_ha, ',', hru(cj)%water_evap
 		end do
 
         !! determine beginning and ending dates of simulation in current year
@@ -273,6 +277,13 @@
               end if
             end do
           end if
+          
+        
+		!!do cj = 1, size(hru) - 1
+        !!    write(500000,*)time%yrc, ',', time%mo, ',', time%day, ',', hru(cj)%obj_no, ',', ob(cj)%name, ',', hru(cj)%km, ','
+		!!end do
+        
+          
         end do              !! end daily loop
 
         !! perform end-of-year processes
