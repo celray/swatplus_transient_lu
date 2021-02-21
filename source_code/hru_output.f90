@@ -20,9 +20,18 @@
       real :: const
       real :: sw_init
       real :: sno_init
+      
       real :: lat_q_vol_d
       real :: surq_q_vol_d
       real :: et_vol_d
+                        
+      real :: lat_q_vol_m
+      real :: surq_q_vol_m
+      real :: et_vol_m
+                        
+      real :: lat_q_vol_y
+      real :: surq_q_vol_y
+      real :: et_vol_y
                          
 !!    ~ ~ ~ PURPOSE ~ ~ ~
 !!    this subroutine outputs HRU variables on daily, monthly and annual time steps
@@ -43,11 +52,13 @@
              hwb_d(j)%sw = (hwb_d(j)%sw_init + hwb_d(j)%sw_final) / 2.
              hwb_d(j)%sno_final = hru(j)%sno_mm
              hwb_d(j)%snopack = (hwb_d(j)%sno_init + hwb_d(j)%sno_final) / 2.
+             
              lat_q_vol_d = hwb_d(j)%latq * hru(j)%km * 1000
              surq_q_vol_d = hwb_d(j)%surq_gen * hru(j)%km * 1000
              et_vol_d = hwb_d(j)%et * hru(j)%km * 1000
-             write (2000,100) time%day, time%mo, time%day_mo, time%yrc, j, ob(iob)%gis_id, ob(iob)%name, hwb_d(j)   !! waterbal
              write(500000,'(*(G0.3,:","))')time%day_mo,time%mo,time%yrc,j,ob(iob)%gis_id,ob(iob)%name,hru(j)%km,lat_q_vol_d,surq_q_vol_d,et_vol_d  !! volumes
+             
+             write (2000,100) time%day, time%mo, time%day_mo, time%yrc, j, ob(iob)%gis_id, ob(iob)%name, hwb_d(j)   !! waterbal
              
              if (pco%csvout == "y") then
                !! changed write unit below (2004 to write file data)
@@ -89,8 +100,17 @@
           
           !! monthly print
            if (pco%wb_hru%m == "y") then
+               
              hwb_m(j)%sw_final = hwb_d(j)%sw_final
              hwb_m(j)%sno_final = hwb_d(j)%sno_final
+             
+                          
+             lat_q_vol_m = hwb_m(j)%latq * hru(j)%km * 1000
+             surq_q_vol_m = hwb_m(j)%surq_gen * hru(j)%km * 1000
+             et_vol_m = hwb_m(j)%et * hru(j)%km * 1000
+             write(500001,'(*(G0.3,:","))')time%day_mo,time%mo,time%yrc,j,ob(iob)%gis_id,ob(iob)%name,hru(j)%km,lat_q_vol_m,surq_q_vol_m,et_vol_m  !! volumes
+                         
+             
              write (2001,100) time%day, time%mo, time%day_mo, time%yrc, j, ob(iob)%gis_id, ob(iob)%name, hwb_m(j)
                if (pco%csvout == "y") then
                  write (2005,'(*(G0.3,:","))') time%day, time%mo, time%day_mo, time%yrc, j, ob(iob)%gis_id, ob(iob)%name, hwb_m(j)
@@ -140,6 +160,14 @@
            if (time%end_yr == 1 .and. pco%wb_hru%y == "y") then
              hwb_y(j)%sw_final = hwb_d(j)%sw_final
              hwb_y(j)%sno_final = hwb_d(j)%sno_final
+             
+                          
+             lat_q_vol_y = hwb_y(j)%latq * hru(j)%km * 1000
+             surq_q_vol_y = hwb_y(j)%surq_gen * hru(j)%km * 1000
+             et_vol_y = hwb_y(j)%et * hru(j)%km * 1000
+             write(500002,'(*(G0.3,:","))')time%day_mo,time%mo,time%yrc,j,ob(iob)%gis_id,ob(iob)%name,hru(j)%km,lat_q_vol_y,surq_q_vol_y,et_vol_y  !! volumes
+             
+             
              write (2002,100) time%day, time%mo, time%day_mo, time%yrc, j, ob(iob)%gis_id, ob(iob)%name, hwb_y(j)
                if (pco%csvout == "y") then
                  write (2006,'(*(G0.3,:","))') time%day, time%mo, time%day_mo, time%yrc, j, ob(iob)%gis_id, ob(iob)%name, hwb_y(j)

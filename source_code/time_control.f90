@@ -106,8 +106,12 @@
 	  
 	  OPEN(38789,file="hru_area_yr.csv",action='write',status='replace')
 	  OPEN(500000,file="hru_vols_day.csv",action='write',status='replace')
+	  OPEN(500001,file="hru_vols_mon.csv",action='write',status='replace')
+	  OPEN(500002,file="hru_vols_yr.csv",action='write',status='replace')
     
       write(500000,'(*(G0.3,:","))')'Day,Month,Year,HRUID,GIS_ID,HRU,Area(km2),lateral_flow(m3),surface_runoff(m3),ET(m3)'
+      write(500001,'(*(G0.3,:","))')'Day,Month,Year,HRUID,GIS_ID,HRU,Area(km2),lateral_flow(m3),surface_runoff(m3),ET(m3)'
+      write(500002,'(*(G0.3,:","))')'Day,Month,Year,HRUID,GIS_ID,HRU,Area(km2),lateral_flow(m3),surface_runoff(m3),ET(m3)'
       
 	
       do curyr = 1, time%nbyr
